@@ -1,0 +1,96 @@
+<div class="login-page">
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form [formGroup]="registerForm" action="#" class="sign-in-form" (ngSubmit)="onSubmit()"
+                      autocomplete="off">
+                    <input autocomplete="none" class="hidden-fields" name="username" autocomplete="false">
+                    <input autocomplete="none" class="hidden-fields" type="password" name="password" autocomplete="false">
+                    <h2 class="title">Register</h2>
+
+                    <div class="alert alert-danger" role="alert" *ngIf="isFormInvalid">
+                        {{'register.textFormInvalid'| translate}}
+                    </div>
+
+                    <div class="alert alert-danger" role="alert" *ngIf="areCredentialsInvalid">
+                        {{'register.textCredentialsInvalid'| translate}}
+                    </div>
+
+
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input autocomplete="false" type="text" name="email" id="inputEmail" formControlName="email"
+                               [ngClass]="{ 'is-invalid': submitted && formControls['email'].errors }"
+                               placeholder="Email" required
+                               autofocus ngModel/>
+
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input autocomplete="false" type="text" name="username" id="inputUsername" formControlName="username"
+                               [ngClass]="{ 'is-invalid': submitted && formControls['username'].errors }"
+                               placeholder="User name" required
+                               autofocus ngModel/>
+
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input autocomplete="false" type="password" name="pass" id="inputPassword" formControlName="password"
+                               [ngClass]="{ 'is-invalid': submitted && formControls['password'].errors }"
+                               placeholder="Password" required
+                               ngModel/>
+
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input autocomplete="false" type="password" name="pass" id="inputPassword" formControlName="password"
+                               [ngClass]="{ 'is-invalid': submitted && formControls['password'].errors }"
+                               placeholder="Confirm password" required
+                               ngModel/>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <button [disabled]="loading" type="submit" class="btn solid">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                            Register
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        Already have an account?
+                        <a href="authentication/login"  type="button" class="btn solid register">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                            Login now
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                    <h3>{{'register.welcome'| translate}}</h3>
+                    <p>
+                        {{'register.message'| translate}}
+                    </p>
+                </div>
+                <img class="image"/>
+            </div>
+        </div>
+    </div>
+    <div>
+        <p-selectButton class="lang-dropdown" [options]="translatedLanguages" [(ngModel)]="selectedLang"
+                        (onChange)="switchLang(selectedLang.code)" optionLabel="name"></p-selectButton>
+    </div>
+</div>
+
+<p-dialog header="Ups..." position="top-right" [(visible)]="displayModal" [style]="{width: '700px'}">
+    {{'register.wrongpassword'| translate}}
+</p-dialog>
+
+<p-dialog header="Warning!" position="top-right" [style]="{width: '700px'}"
+          [(visible)]="displayModalAfterFourBadPassword">
+    {{'register.warning'| translate}}
+</p-dialog>
