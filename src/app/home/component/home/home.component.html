@@ -1,0 +1,55 @@
+<div class="jumbotron text-center">
+</div>
+
+<p-button (click)="logout()" icon="pi pi-external-link" label="Log out"></p-button>
+<p-button (click)="showMaximizableDialog()" icon="pi pi-external-link" label="Show"></p-button>
+<p-dialog header="Gift Wizard" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true"
+          [draggable]="false" [resizable]="false">
+    <p-steps [model]="items" [(activeIndex)]="activeIndex"></p-steps>
+    <section [hidden]="activeIndex !== 0">
+        <div class="stepsdemo-content">
+            <p-card>
+                <ng-template pTemplate="title">
+                    Personal Information
+                </ng-template>
+                <ng-template pTemplate="subtitle">
+                    Enter your personal information
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <div class="p-fluid" class="field">
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <div class="grid grid-nogutter justify-content-end">
+                        <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+                    </div>
+                </ng-template>
+        </p-card>
+        </div>
+    </section>
+    <section [hidden]="activeIndex !== 1">
+        HEHE
+        <div class="stepsdemo-content">
+            <p-card>
+                <ng-template pTemplate="title">
+                    Personal Information
+                </ng-template>
+                <ng-template pTemplate="subtitle">
+                    Enter your personal information
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <div class="p-fluid" class="field">
+                    </div>
+                </ng-template>
+
+                <ng-template pTemplate="footer">
+                    <div class="grid grid-nogutter justify-content-end">
+                        <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+                        <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+                    </div>
+                </ng-template>
+            </p-card>
+        </div>
+    </section>
+</p-dialog>
+
