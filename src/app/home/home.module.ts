@@ -7,6 +7,7 @@ import {ButtonModule} from 'primeng/button';
 import {StepsModule} from 'primeng/steps';
 import {CardModule} from 'primeng/card';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {SelectButtonModule} from 'primeng/selectbutton';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     StepsModule,
     CardModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SelectButtonModule
   ]
 })
 export class HomeModule {

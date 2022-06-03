@@ -17,18 +17,19 @@
                 </ng-template>
                 <ng-template pTemplate="content">
                     <div class="p-fluid" class="field">
+                        <div *ngFor="let tag of getTagsByCategory('gender')">
+                            <p-button label="{{tag.label}}" (onClick)="selectGender(tag)"></p-button>
+                        </div>
                     </div>
                 </ng-template>
                 <ng-template pTemplate="footer">
                     <div class="grid grid-nogutter justify-content-end">
-                        <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
                     </div>
                 </ng-template>
         </p-card>
         </div>
     </section>
     <section [hidden]="activeIndex !== 1">
-        HEHE
         <div class="stepsdemo-content">
             <p-card>
                 <ng-template pTemplate="title">
@@ -39,13 +40,116 @@
                 </ng-template>
                 <ng-template pTemplate="content">
                     <div class="p-fluid" class="field">
+                        <div *ngFor="let tag of getTagsByCategory('age')">
+                            <p-button label="{{tag.label}}" (onClick)="selectAge(tag)"></p-button>
+                        </div>
                     </div>
                 </ng-template>
 
                 <ng-template pTemplate="footer">
                     <div class="grid grid-nogutter justify-content-end">
                         <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
-                        <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+                    </div>
+                </ng-template>
+            </p-card>
+        </div>
+    </section>
+    <section [hidden]="activeIndex !== 2">=
+        <div class="stepsdemo-content">
+            <p-card>
+                <ng-template pTemplate="title">
+                    Personal Information
+                </ng-template>
+                <ng-template pTemplate="subtitle">
+                    Enter your personal information
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <div class="p-fluid" class="field">
+                        <div *ngFor="let tag of getRelationshipTags()">
+                            <p-button label="{{tag.label}}" (onClick)="selectRelationship(tag)"></p-button>
+                        </div>
+                    </div>
+                </ng-template>
+
+                <ng-template pTemplate="footer">
+                    <div class="grid grid-nogutter justify-content-end">
+                        <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+                    </div>
+                </ng-template>
+            </p-card>
+        </div>
+    </section>
+    <section [hidden]="activeIndex !== 3">=
+        <div class="stepsdemo-content">
+            <p-card>
+                <ng-template pTemplate="title">
+                    Personal Information
+                </ng-template>
+                <ng-template pTemplate="subtitle">
+                    Enter your personal information
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <div class="p-fluid" class="field">
+                        <div *ngFor="let tag of getTagsByCategory('budget')">
+                            <p-button label="{{tag.label}}" (onClick)="selectBudget(tag)"></p-button>
+                        </div>
+                    </div>
+                </ng-template>
+
+                <ng-template pTemplate="footer">
+                    <div class="grid grid-nogutter justify-content-end">
+                        <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+                    </div>
+                </ng-template>
+            </p-card>
+        </div>
+    </section>
+    <section [hidden]="activeIndex !== 4">=
+        <div class="stepsdemo-content">
+            <p-card>
+                <ng-template pTemplate="title">
+                    Personal Information
+                </ng-template>
+                <ng-template pTemplate="subtitle">
+                    Enter your personal information
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <div class="p-fluid" class="field">
+                        <div *ngFor="let tag of getTagsByCategory('occasion')">
+                            <p-button label="{{tag.label}}" (onClick)="selectOccasion(tag)"></p-button>
+                        </div>
+                    </div>
+                </ng-template>
+
+                <ng-template pTemplate="footer">
+                    <div class="grid grid-nogutter justify-content-end">
+                        <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+                    </div>
+                </ng-template>
+            </p-card>
+        </div>
+    </section>
+    <section [hidden]="activeIndex !== 5">=
+        <div class="stepsdemo-content">
+            <p-card>
+                <ng-template pTemplate="title">
+                    Personal Information
+                </ng-template>
+                <ng-template pTemplate="subtitle">
+                    Enter your personal information
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <div class="p-fluid" class="field">
+                        <p-selectButton [options]="getTagsByCategory(null)"
+                                        [(ngModel)]="optionalTags"
+                                        [multiple]="true"
+                                        optionLabel="label"></p-selectButton>
+                    </div>
+                </ng-template>
+
+                <ng-template pTemplate="footer">
+                    <div class="grid grid-nogutter justify-content-end">
+                        <p-button label="Search" (onClick)="search()" icon="pi pi-angle-left" iconPos="left"></p-button>
                     </div>
                 </ng-template>
             </p-card>
