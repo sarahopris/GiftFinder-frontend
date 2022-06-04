@@ -1,391 +1,391 @@
 [
   {
     "id": "1",
-    "label": "him",
+    "tagName": "him",
     "value": "1",
     "category": "gender"
   },
   {
     "id": "2",
-    "label": "her",
+    "tagName": "her",
     "value": "2",
     "category": "gender"
   },
   {
     "id": "3",
-    "label": "baby",
+    "tagName": "baby",
     "value": "1",
     "category": "age"
   },
   {
     "id": "4",
-    "label": "toddler",
+    "tagName": "toddler",
     "value": "1",
     "category": "age"
   },
   {
     "id": "5",
-    "label": "kid4-7",
+    "tagName": "kid4-7",
     "value": "2",
     "category": "age"
   },
   {
     "id": "6",
-    "label": "kid9-12",
+    "tagName": "kid9-12",
     "value": "2",
     "category": "age"
   },
   {
     "id": "7",
-    "label": "teen",
+    "tagName": "teen",
     "value": "3",
     "category": "age"
   },
   {
     "id": "8",
-    "label": "young",
+    "tagName": "young",
     "value": "3",
     "category": "age"
   },
   {
     "id": "9",
-    "label": "adult",
+    "tagName": "adult",
     "value": "4",
     "category": "age"
   },
   {
     "id": "10",
-    "label": "senior",
+    "tagName": "senior",
     "value": "4",
     "category": "age"
   },
   {
     "id": "11",
-    "label": "brother",
+    "tagName": "brother",
     "value": [1,1],
     "category": "relationship"
   },
   {
     "id": "12",
-    "label": "son",
+    "tagName": "son",
     "value": [1,1],
     "category": "relationship"
   },
   {
     "id": "13",
-    "label": "grandson",
+    "tagName": "grandson",
     "value": [1,1],
     "category": "relationship"
   },
   {
     "id": "14",
-    "label": "otherRelationship",
+    "tagName": "otherRelationship",
     "value": [1,1],
     "category": "relationship"
   },
   {
     "id": "15",
-    "label": "friend",
+    "tagName": "friend",
     "value": [1,2],
     "category": "relationship"
   },
   {
     "id": "16",
-    "label": "boyfriend",
+    "tagName": "boyfriend",
     "value": [1,3],
     "category": "relationship"
   },
   {
     "id": "17",
-    "label": "husband",
+    "tagName": "husband",
     "value": [1,3],
     "category": "relationship"
   },
   {
     "id": "18",
-    "label": "work",
+    "tagName": "work",
     "value": [1,3],
     "category": "relationship"
   },
   {
     "id": "19",
-    "label": "dad",
+    "tagName": "dad",
     "value": [1,4],
     "category": "relationship"
   },
   {
     "id": "20",
-    "label": "grandpa",
+    "tagName": "grandpa",
     "value": [1,4],
     "category": "relationship"
   },
   {
     "id": "21",
-    "label": "sister",
+    "tagName": "sister",
     "value": [2,1],
     "category": "relationship"
   },
   {
     "id": "22",
-    "label": "daughter",
+    "tagName": "daughter",
     "value": [2,1],
     "category": "relationship"
   },
   {
     "id": "23",
-    "label": "granddaughter",
+    "tagName": "granddaughter",
     "value": [2,1],
     "category": "relationship"
   },
   {
     "id": "24",
-    "label": "otherRelationship",
+    "tagName": "otherRelationship",
     "value": [2,1],
     "category": "relationship"
   },
   {
     "id": "25",
-    "label": "friend",
+    "tagName": "friend",
     "value": [2,2],
     "category": "relationship"
   },
   {
     "id": "26",
-    "label": "girlfriend",
+    "tagName": "girlfriend",
     "value": [2,3],
     "category": "relationship"
   },
   {
     "id": "27",
-    "label": "wife",
+    "tagName": "wife",
     "value": [2,3],
     "category": "relationship"
   },
   {
     "id": "28",
-    "label": "work",
+    "tagName": "work",
     "value": [2,3],
     "category": "relationship"
   },
   {
     "id": "29",
-    "label": "mom",
+    "tagName": "mom",
     "value": [2,4],
     "category": "relationship"
   },
   {
     "id": "30",
-    "label": "grandma",
+    "tagName": "grandma",
     "value": [2,4],
     "category": "relationship"
   },
   {
     "id": "31",
-    "label": "25",
+    "tagName": "25",
     "value": "",
     "category": "budget"
   },
   {
     "id": "32",
-    "label": "50",
+    "tagName": "50",
     "value": "",
     "category": "budget"
   },
   {
     "id": "33",
-    "label": "100",
+    "tagName": "100",
     "value": "",
     "category": "budget"
   },
   {
     "id": "34",
-    "label": "250",
+    "tagName": "250",
     "value": "",
     "category": "budget"
   },
   {
     "id": "35",
-    "label": "500",
+    "tagName": "500",
     "value": "",
     "category": "budget"
   },
   {
     "id": "36",
-    "label": "1000",
+    "tagName": "1000",
     "value": "",
     "category": "budget"
   },
   {
     "id": "37",
-    "label": "any",
+    "tagName": "any",
     "value": "",
     "category": "budget"
   },
   {
     "id": "38",
-    "label": "birthday",
+    "tagName": "birthday",
     "value": "",
     "category": "occasion"
   },
   {
     "id": "39",
-    "label": "christmas",
+    "tagName": "christmas",
     "value": "",
     "category": "occasion"
   },
   {
     "id": "41",
-    "label": "newYear",
+    "tagName": "newYear",
     "value": "",
     "category": "occasion"
   },
   {
     "id": "42",
-    "label": "achievement",
+    "tagName": "achievement",
     "value": "",
     "category": "occasion"
   },
   {
     "id": "43",
-    "label": "nothing",
+    "tagName": "nothing",
     "value": "",
     "category": "occasion"
   },
   {
     "id": "44",
-    "label": "invited",
+    "tagName": "invited",
     "value": "",
     "category": "occasion"
   },
   {
     "id": "45",
-    "label": "otherOccasion",
+    "tagName": "otherOccasion",
     "value": "",
     "category": "occasion"
   },
   {
     "id": "46",
-    "label": "dontKnow",
+    "tagName": "dontKnow",
     "value": "",
     "category": null
   },
   {
     "id": "47",
-    "label": "videoGames",
+    "tagName": "videoGames",
     "value": "",
     "category": null
   },
   {
     "id": "48",
-    "label": "comics",
+    "tagName": "comics",
     "value": "",
     "category": null
   },
   {
     "id": "49",
-    "label": "movies",
+    "tagName": "movies",
     "value": "",
     "category": null
   },
   {
     "id": "50",
-    "label": "sports",
+    "tagName": "sports",
     "value": "",
     "category": null
   },
   {
     "id": "51",
-    "label": "travel",
+    "tagName": "travel",
     "value": "",
     "category": null
   },
   {
     "id": "52",
-    "label": "music",
+    "tagName": "music",
     "value": "",
     "category": null
   },
   {
     "id": "53",
-    "label": "art",
+    "tagName": "art",
     "value": "",
     "category": null
   },
   {
     "id": "54",
-    "label": "beauty",
+    "tagName": "beauty",
     "value": "",
     "category": null
   },
   {
     "id": "55",
-    "label": "diy",
+    "tagName": "diy",
     "value": "",
     "category": null
   },
   {
     "id": "56",
-    "label": "learning",
+    "tagName": "learning",
     "value": "",
     "category": null
   },
   {
     "id": "57",
-    "label": "food",
+    "tagName": "food",
     "value": "",
     "category": null
   },
   {
     "id": "58",
-    "label": "cleaning",
+    "tagName": "cleaning",
     "value": "",
     "category": null
   },
   {
     "id": "59",
-    "label": "sleeping",
+    "tagName": "sleeping",
     "value": "",
     "category": null
   },
   {
     "id": "60",
-    "label": "tech",
+    "tagName": "tech",
     "value": "",
     "category": null
   },
   {
     "id": "61",
-    "label": "socialMedia",
+    "tagName": "socialMedia",
     "value": "",
     "category": null
   },
   {
     "id": "62",
-    "label": "family",
+    "tagName": "family",
     "value": "",
     "category": null
   },
   {
     "id": "63",
-    "label": "extraWork",
+    "tagName": "extraWork",
     "value": "",
     "category": null
   },
   {
     "id": "64",
-    "label": "praying",
+    "tagName": "praying",
     "value": "",
     "category": null
   },
   {
     "id": "65",
-    "label": "partying",
+    "tagName": "partying",
     "value": "",
     "category": null
   },
   {
     "id": "66",
-    "label": "fixingStuff",
+    "tagName": "fixingStuff",
     "value": "",
     "category": null
   }

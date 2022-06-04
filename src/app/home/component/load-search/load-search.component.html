@@ -1,0 +1,17 @@
+<p-card>
+    <ng-template pTemplate="title">
+        I want to see again what is best suited for ...
+    </ng-template>
+    <ng-template pTemplate="subtitle">
+    </ng-template>
+    <ng-template pTemplate="content">
+        <div class="p-fluid element-list">
+            <div class="element" *ngFor="let name of savedNames">
+                <p-button label="{{name}}" (onClick)="searchByName(name)"></p-button>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+    </ng-template>
+</p-card>

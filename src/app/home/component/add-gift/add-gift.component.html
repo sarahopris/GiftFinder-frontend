@@ -1,0 +1,193 @@
+<p-steps [model]="items" [(activeIndex)]="activeIndex"></p-steps>
+<section [hidden]="activeIndex !== 0">
+    <div class="stepsdemo-content">
+        <p-card>
+            <ng-template pTemplate="title">
+                This gift will be fit for:
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+            </ng-template>
+            <ng-template pTemplate="content">
+                <div class="p-fluid element-list">
+                    Name, image
+                </div>
+            </ng-template>
+            <ng-template pTemplate="footer">
+                <div class="grid grid-nogutter justify-content-end">
+                    <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right" class="search-button"></p-button>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+</section>
+<section [hidden]="activeIndex !== 1">
+    <div class="stepsdemo-content">
+        <p-card>
+            <ng-template pTemplate="title">
+                This gift will be fit for:
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+                Select at least one tag
+            </ng-template>
+            <ng-template pTemplate="content">
+                <div class="p-fluid element-list">
+                    <p-selectButton [options]="getTagsByCategory('gender')"
+                                    [(ngModel)]="genders"
+                                    [multiple]="true"
+                                    class="select-button-set"
+                                    optionLabel="tagName"></p-selectButton>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="footer">
+                <div class="grid grid-nogutter justify-content-end">
+                    <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+                    <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right" class="search-button"
+                        [disabled]="genders.length === 0"></p-button>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+</section>
+<section [hidden]="activeIndex !== 2">
+    <div class="stepsdemo-content">
+        <p-card>
+            <ng-template pTemplate="title">
+                Which age groups are suited for this gift?
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+                Select at least one tag
+            </ng-template>
+            <ng-template pTemplate="content">
+                <div class="p-fluid element-list">
+                    <p-selectButton [options]="getTagsByCategory('age')"
+                                    [(ngModel)]="ages"
+                                    [multiple]="true"
+                                    class="select-button-set"
+                                    optionLabel="tagName"></p-selectButton>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <div class="grid grid-nogutter justify-content-end">
+                    <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+                    <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right" class="search-button"
+                              [disabled]="ages.length === 0"></p-button>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+</section>
+<section [hidden]="activeIndex !== 3">=
+    <div class="stepsdemo-content">
+        <p-card>
+            <ng-template pTemplate="title">
+                This gift will be great for a:
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+                Select at least one tag
+            </ng-template>
+            <ng-template pTemplate="content">
+                <div class="p-fluid element-list">
+                    <p-selectButton [options]="getTagsByCategory('relationship')"
+                                    [(ngModel)]="relationships"
+                                    [multiple]="true"
+                                    class="select-button-set"
+                                    optionLabel="tagName"></p-selectButton>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <div class="grid grid-nogutter justify-content-end">
+                    <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+                    <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right" class="search-button"
+                              [disabled]="relationships.length === 0"></p-button>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+</section>
+<section [hidden]="activeIndex !== 4">=
+    <div class="stepsdemo-content">
+        <p-card>
+            <ng-template pTemplate="title">
+                How much does the gift cost?
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+                Select at least one tag
+            </ng-template>
+            <ng-template pTemplate="content">
+                <div class="p-fluid element-list">
+                    <p-selectButton [options]="getTagsByCategory('budget')"
+                                    [(ngModel)]="budgets"
+                                    [multiple]="true"
+                                    class="select-button-set"
+                                    optionLabel="tagName"></p-selectButton>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <div class="grid grid-nogutter justify-content-end">
+                    <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+                    <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right" class="search-button"
+                              [disabled]="budgets.length === 0"></p-button>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+</section>
+<section [hidden]="activeIndex !== 5">=
+    <div class="stepsdemo-content">
+        <p-card>
+            <ng-template pTemplate="title">
+                Is this gift suited for the following occasions?
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+                Select at least one tag
+            </ng-template>
+            <ng-template pTemplate="content">
+                <div class="p-fluid element-list">
+                    <p-selectButton [options]="getTagsByCategory('occasion')"
+                                    [(ngModel)]="occasions"
+                                    [multiple]="true"
+                                    class="select-button-set"
+                                    optionLabel="tagName"></p-selectButton>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <div class="grid grid-nogutter justify-content-end">
+                    <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+                    <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right" class="search-button"
+                              [disabled]="occasions.length === 0"></p-button>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+</section>
+<section [hidden]="activeIndex !== 6">=
+    <div class="stepsdemo-content">
+        <p-card>
+            <ng-template pTemplate="title">
+                Can this gift be enjoyed better combined with some of these hobbies/interests?
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+            </ng-template>
+            <ng-template pTemplate="content">
+                <div class="p-fluid element-list">
+                    <p-selectButton [options]="getTagsByCategory(null)"
+                                    [(ngModel)]="optionalTags"
+                                    [multiple]="true"
+                                    class="select-button-set"
+                                    optionLabel="tagName"></p-selectButton>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <div class="grid grid-nogutter justify-content-end">
+                    <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+                    <p-button label="Add gift" (onClick)="search()" icon="pi pi-angle-right" iconPos="right" class="search-button"></p-button>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+</section>

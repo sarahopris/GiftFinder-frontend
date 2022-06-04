@@ -1,159 +1,75 @@
-<div class="jumbotron text-center">
+<div class="home-page">
+  <p-button (click)="logout()" icon="pi pi-power-off" label="Log out" class="log-out-button"></p-button>
+  <div class="container">
+    <div class="forms-container">
+      <div class="signin-signup">
+        <p-button (click)="showSearchDialog()" icon="pi pi-search" label="Search for gifts"
+                  class="btn"></p-button>
+        <p-button (click)="showSaveSearchDialog()" icon="pi pi-heart-fill" label="Save Search"
+                  class="btn"></p-button>
+        <p-button (click)="showLoadSearchDialog()" icon="pi pi-download" label="Load Search"
+                  class="btn"></p-button>
+        <br>
+        <p-button (click)="showAddTagDialog()" icon="pi pi-comment" label="Add tag" class="btn"></p-button>
+        <p-button (click)="showAddGiftDialog()" icon="pi pi-microsoft" label="Add gift" class="btn"></p-button>
+      </div>
+    </div>
+
+    <div class="panels-container">
+      <div class="panel left-panel">
+        <div class="content">
+          <h3>Find the perfect gift</h3>
+          <p>
+            for your loved ones!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<p-button (click)="logout()" icon="pi pi-external-link" label="Log out"></p-button>
-<p-button (click)="showMaximizableDialog()" icon="pi pi-external-link" label="Show"></p-button>
-<p-dialog header="Gift Wizard" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true"
+<p-dialog header="Search Gift Wizard" [(visible)]="displaySearchWizard" [modal]="true" [style]="{width: '50vw'}"
+          [maximizable]="true"
           [draggable]="false" [resizable]="false">
-    <p-steps [model]="items" [(activeIndex)]="activeIndex"></p-steps>
-    <section [hidden]="activeIndex !== 0">
-        <div class="stepsdemo-content">
-            <p-card>
-                <ng-template pTemplate="title">
-                    Personal Information
-                </ng-template>
-                <ng-template pTemplate="subtitle">
-                    Enter your personal information
-                </ng-template>
-                <ng-template pTemplate="content">
-                    <div class="p-fluid" class="field">
-                        <div *ngFor="let tag of getTagsByCategory('gender')">
-                            <p-button label="{{tag.label}}" (onClick)="selectGender(tag)"></p-button>
-                        </div>
-                    </div>
-                </ng-template>
-                <ng-template pTemplate="footer">
-                    <div class="grid grid-nogutter justify-content-end">
-                    </div>
-                </ng-template>
-        </p-card>
-        </div>
-    </section>
-    <section [hidden]="activeIndex !== 1">
-        <div class="stepsdemo-content">
-            <p-card>
-                <ng-template pTemplate="title">
-                    Personal Information
-                </ng-template>
-                <ng-template pTemplate="subtitle">
-                    Enter your personal information
-                </ng-template>
-                <ng-template pTemplate="content">
-                    <div class="p-fluid" class="field">
-                        <div *ngFor="let tag of getTagsByCategory('age')">
-                            <p-button label="{{tag.label}}" (onClick)="selectAge(tag)"></p-button>
-                        </div>
-                    </div>
-                </ng-template>
-
-                <ng-template pTemplate="footer">
-                    <div class="grid grid-nogutter justify-content-end">
-                        <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
-                    </div>
-                </ng-template>
-            </p-card>
-        </div>
-    </section>
-    <section [hidden]="activeIndex !== 2">=
-        <div class="stepsdemo-content">
-            <p-card>
-                <ng-template pTemplate="title">
-                    Personal Information
-                </ng-template>
-                <ng-template pTemplate="subtitle">
-                    Enter your personal information
-                </ng-template>
-                <ng-template pTemplate="content">
-                    <div class="p-fluid" class="field">
-                        <div *ngFor="let tag of getRelationshipTags()">
-                            <p-button label="{{tag.label}}" (onClick)="selectRelationship(tag)"></p-button>
-                        </div>
-                    </div>
-                </ng-template>
-
-                <ng-template pTemplate="footer">
-                    <div class="grid grid-nogutter justify-content-end">
-                        <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
-                    </div>
-                </ng-template>
-            </p-card>
-        </div>
-    </section>
-    <section [hidden]="activeIndex !== 3">=
-        <div class="stepsdemo-content">
-            <p-card>
-                <ng-template pTemplate="title">
-                    Personal Information
-                </ng-template>
-                <ng-template pTemplate="subtitle">
-                    Enter your personal information
-                </ng-template>
-                <ng-template pTemplate="content">
-                    <div class="p-fluid" class="field">
-                        <div *ngFor="let tag of getTagsByCategory('budget')">
-                            <p-button label="{{tag.label}}" (onClick)="selectBudget(tag)"></p-button>
-                        </div>
-                    </div>
-                </ng-template>
-
-                <ng-template pTemplate="footer">
-                    <div class="grid grid-nogutter justify-content-end">
-                        <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
-                    </div>
-                </ng-template>
-            </p-card>
-        </div>
-    </section>
-    <section [hidden]="activeIndex !== 4">=
-        <div class="stepsdemo-content">
-            <p-card>
-                <ng-template pTemplate="title">
-                    Personal Information
-                </ng-template>
-                <ng-template pTemplate="subtitle">
-                    Enter your personal information
-                </ng-template>
-                <ng-template pTemplate="content">
-                    <div class="p-fluid" class="field">
-                        <div *ngFor="let tag of getTagsByCategory('occasion')">
-                            <p-button label="{{tag.label}}" (onClick)="selectOccasion(tag)"></p-button>
-                        </div>
-                    </div>
-                </ng-template>
-
-                <ng-template pTemplate="footer">
-                    <div class="grid grid-nogutter justify-content-end">
-                        <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
-                    </div>
-                </ng-template>
-            </p-card>
-        </div>
-    </section>
-    <section [hidden]="activeIndex !== 5">=
-        <div class="stepsdemo-content">
-            <p-card>
-                <ng-template pTemplate="title">
-                    Personal Information
-                </ng-template>
-                <ng-template pTemplate="subtitle">
-                    Enter your personal information
-                </ng-template>
-                <ng-template pTemplate="content">
-                    <div class="p-fluid" class="field">
-                        <p-selectButton [options]="getTagsByCategory(null)"
-                                        [(ngModel)]="optionalTags"
-                                        [multiple]="true"
-                                        optionLabel="label"></p-selectButton>
-                    </div>
-                </ng-template>
-
-                <ng-template pTemplate="footer">
-                    <div class="grid grid-nogutter justify-content-end">
-                        <p-button label="Search" (onClick)="search()" icon="pi pi-angle-left" iconPos="left"></p-button>
-                    </div>
-                </ng-template>
-            </p-card>
-        </div>
-    </section>
+  <app-wizzard [tags]="tags" [extraTags]="extraTags"></app-wizzard>
 </p-dialog>
-
+<p-dialog header="Add Tag Modal" [(visible)]="displayAddTagWizard" [modal]="true" [style]="{width: '50vw'}"
+          [maximizable]="true"
+          [draggable]="false" [resizable]="false">
+  <app-add-tag></app-add-tag>
+</p-dialog>
+<p-dialog header="Add Gift Wizard" [(visible)]="displayAddGiftWizard" [modal]="true" [style]="{width: '50vw'}"
+          [maximizable]="true"
+          [draggable]="false" [resizable]="false">
+  <app-add-gift [tags]="tags"></app-add-gift>
+</p-dialog>
+<p-dialog header="Save search" [(visible)]="displaySaveSearchWizard" [modal]="true" [style]="{width: '50vw'}"
+          [maximizable]="true"
+          [draggable]="false" [resizable]="false">
+  <app-save-search></app-save-search>
+</p-dialog>
+<p-dialog header="Load search" [(visible)]="displayLoadSearchWizard" [modal]="true" [style]="{width: '50vw'}"
+          [maximizable]="true"
+          [draggable]="false" [resizable]="false">
+  <app-load-search></app-load-search>
+</p-dialog>
+<p-progressSpinner class="progress-spinner" *ngIf="loading"></p-progressSpinner>
+<div class="results" *ngIf="!loading">
+  <div class="category" *ngFor="let category of categories">
+    <ng-container *ngIf="getItemsByCategory(category.categoryName) as filteredResults">
+      <div *ngIf="filteredResults.length !== 0">
+        <p class="category-label">{{category.categoryName}}</p>
+        <p-carousel [value]="filteredResults" [numVisible]="4" [numScroll]="1"
+                    [responsiveOptions]="responsiveOptions"
+                    [autoplayInterval]="3000" [circular]="true">
+          <ng-template let-product pTemplate="item">
+            <div *ngIf="product.imgURL !== null" class="result-wrapper">
+              <img src="{{product.imgURL}}">
+              <p>{{product.itemName}}</p>
+            </div>
+          </ng-template>
+        </p-carousel>
+      </div>
+    </ng-container>
+  </div>
+</div>

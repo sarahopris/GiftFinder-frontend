@@ -8,11 +8,24 @@ import {StepsModule} from 'primeng/steps';
 import {CardModule} from 'primeng/card';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SelectButtonModule} from 'primeng/selectbutton';
+import { WizzardComponent } from './component/wizzard/wizzard.component';
+import { AddTagComponent } from './component/add-tag/add-tag.component';
+import {TranslateModule} from '@ngx-translate/core';
+import { AddGiftComponent } from './component/add-gift/add-gift.component';
+import { SaveSearchComponent } from './component/save-search/save-search.component';
+import { LoadSearchComponent } from './component/load-search/load-search.component';
+import {CarouselModule} from 'primeng/carousel';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    WizzardComponent,
+    AddTagComponent,
+    AddGiftComponent,
+    SaveSearchComponent,
+    LoadSearchComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +36,10 @@ import {SelectButtonModule} from 'primeng/selectbutton';
     CardModule,
     FormsModule,
     ReactiveFormsModule,
-    SelectButtonModule
+    SelectButtonModule,
+    TranslateModule,
+    CarouselModule,
+    ProgressSpinnerModule
   ]
 })
 export class HomeModule {

@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {BackendService} from '../../backend/backend.service';
 import {Router} from '@angular/router';
 import {BehaviorSubject, map, Observable} from 'rxjs';
+import {environment} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,7 @@ export class AuthenticationService {
     }
 
 
-    return this.backendService.post('http://localhost:4300/user/login', body)
+    return this.backendService.post(`${environment.webServiceEndpointURL}user/login`, body)
         .pipe(
             map((user: any) => {
               localStorage.setItem('currentUser', JSON.stringify(user));
@@ -56,7 +57,7 @@ export class AuthenticationService {
     }
 
 
-    return this.backendService.post('http://localhost:4300/users/addUser', body)
+    return this.backendService.post(`${environment.webServiceEndpointURL}users/addUser`, body)
         .pipe(
             map((user: any) => {
               return user;
@@ -70,7 +71,7 @@ export class AuthenticationService {
    * delete the informations about the user from the localstorage
    */
   logout() {
-    return this.backendService.post('http://localhost:4300/user/logout', localStorage.getItem('currentUsername')).subscribe(() => {
+    return this.backendService.post(`${environment.webServiceEndpointURL}user/logout`, localStorage.getItem('currentUsername')).subscribe(() => {
       localStorage.removeItem('currentToken');
       localStorage.removeItem('currentUser');
       localStorage.removeItem('currentUsername');
