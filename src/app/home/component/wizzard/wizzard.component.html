@@ -1,0 +1,145 @@
+<section [hidden]="activeIndex !== 0">
+    <div class="stepsdemo-content">
+        <p-card>
+            <ng-template pTemplate="title">
+                I need a gift for...
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+            </ng-template>
+            <ng-template pTemplate="content">
+                <div class="p-fluid element-list">
+                    <div class="element" *ngFor="let tag of getTagsByCategory('gender')">
+                        <p-button label="{{tag.tagName}}" (onClick)="selectGender(tag)"></p-button>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="footer">
+                <div class="grid grid-nogutter justify-content-end">
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+</section>
+<section [hidden]="activeIndex !== 1">
+    <div class="stepsdemo-content">
+        <p-card>
+            <ng-template pTemplate="title">
+                {{gender.value === '1' ? 'How old is he?' : 'How old is she?'}}
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+            </ng-template>
+            <ng-template pTemplate="content">
+                <div class="p-fluid element-list">
+                    <div class="element" *ngFor="let tag of getTagsByCategory('age')">
+                        <p-button label="{{tag.tagName}}" (onClick)="selectAge(tag)"></p-button>
+                    </div>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <div class="grid grid-nogutter justify-content-end">
+                    <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+</section>
+<section [hidden]="activeIndex !== 2">=
+    <div class="stepsdemo-content">
+        <p-card>
+            <ng-template pTemplate="title">
+                {{gender.value === '1' ? 'Your relationship with him' : 'Your relationship with her'}}
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+            </ng-template>
+            <ng-template pTemplate="content">
+                <div class="p-fluid element-list">
+                    <div class="element" *ngFor="let tag of getRelationshipTags()">
+                        <p-button label="{{tag.tagName}}" (onClick)="selectRelationship(tag)"></p-button>
+                    </div>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <div class="grid grid-nogutter justify-content-end">
+                    <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+</section>
+<section [hidden]="activeIndex !== 3">=
+    <div class="stepsdemo-content">
+        <p-card>
+            <ng-template pTemplate="title">
+                What's your budget for this gift?
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+            </ng-template>
+            <ng-template pTemplate="content">
+                <div class="p-fluid element-list">
+                    <div class="element" *ngFor="let tag of getTagsByCategory('budget')">
+                        <p-button label="{{tag.tagName}}" (onClick)="selectBudget(tag)"></p-button>
+                    </div>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <div class="grid grid-nogutter justify-content-end">
+                    <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+</section>
+<section [hidden]="activeIndex !== 4">=
+    <div class="stepsdemo-content">
+        <p-card>
+            <ng-template pTemplate="title">
+                So many reasons to give an awesome gift! What are you celebrating?
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+            </ng-template>
+            <ng-template pTemplate="content">
+                <div class="p-fluid element-list">
+                    <div class="element" *ngFor="let tag of getTagsByCategory('occasion')">
+                        <p-button label="{{tag.tagName}}" (onClick)="selectOccasion(tag)"></p-button>
+                    </div>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <div class="grid grid-nogutter justify-content-end">
+                    <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+</section>
+<section [hidden]="activeIndex !== 5">=
+    <div class="stepsdemo-content">
+        <p-card>
+            <ng-template pTemplate="title">
+                {{gender.value === '1' ? 'What does he enjoy in his free time?' : 'What does she enjoy in her free time?'}}
+            </ng-template>
+            <ng-template pTemplate="subtitle">
+            </ng-template>
+            <ng-template pTemplate="content">
+                <div class="p-fluid element-list">
+                    <p-selectButton [options]="extraTags"
+                                    [(ngModel)]="optionalTags"
+                                    [multiple]="true"
+                                    class="select-button-set"
+                                    optionLabel="tagName"></p-selectButton>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="footer">
+                <div class="grid grid-nogutter justify-content-end">
+                    <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
+                    <p-button label="Search" (onClick)="search()" icon="pi pi-angle-right" iconPos="right" class="search-button"></p-button>
+                </div>
+            </ng-template>
+        </p-card>
+    </div>
+</section>

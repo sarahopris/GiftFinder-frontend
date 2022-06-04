@@ -1,0 +1,25 @@
+<form [formGroup]="form" action="#" class="sign-in-form" (ngSubmit)="onSubmit()"
+      autocomplete="off">
+
+    <div class="alert alert-danger" role="alert" *ngIf="isFormInvalid">
+        {{'tag.tagExists'| translate}}
+    </div>
+
+
+    <div class="input-field">
+        <i class="fas fa-user"></i>
+        <input type="text" name="tag" id="inputTag" formControlName="tag"
+               [ngClass]="{ 'is-invalid': submitted && formControls['tag'].errors }"
+               placeholder="Tag name" required
+               autofocus ngModel/>
+
+    </div>
+
+
+    <div class="form-group">
+        <button [disabled]="loading" type="submit" class="btn solid">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Add tag
+        </button>
+    </div>
+</form>

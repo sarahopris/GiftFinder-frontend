@@ -1,0 +1,20 @@
+<form [formGroup]="form" action="#" class="sign-in-form" (ngSubmit)="onSubmit()"
+      autocomplete="off">
+
+    <div class="input-field">
+        <i class="fas fa-user"></i>
+        <input type="text" name="tag" id="inputTag" formControlName="name"
+               [ngClass]="{ 'is-invalid': submitted && formControls['name'].errors }"
+               placeholder="This gift is for ..." required
+               autofocus ngModel/>
+
+    </div>
+
+
+    <div class="form-group">
+        <button [disabled]="loading" type="submit" class="btn solid">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Save search
+        </button>
+    </div>
+</form>

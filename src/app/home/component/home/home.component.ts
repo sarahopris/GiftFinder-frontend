@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../../authentication/service/authentication.service';
 import {MenuItem} from 'primeng/api';
+import {HomeService} from './home.service';
+import {Tag} from '../../../models/tag';
 
 @Component({
   selector: 'app-home',
@@ -9,42 +11,85 @@ import {MenuItem} from 'primeng/api';
 })
 export class HomeComponent implements OnInit {
 
-  displayMaximizable= false;
+  displaySearchWizard= false;
+  displayAddTagWizard= false;
+  displayAddGiftWizard= false;
+  displayLoadSearchWizard= false;
+  displaySaveSearchWizard= false;
+  loading = false;
+  responsiveOptions = [
+    {
+      breakpoint: '1024px',
+      numVisible: 4,
+      numScroll: 2
+    },
+    {
+      breakpoint: '768px',
+      numVisible: 4,
+      numScroll: 2
+    },
+    {
+      breakpoint: '560px',
+      numVisible: 2,
+      numScroll: 1
+    }
+  ];
 
-  activeIndex = 0;
-
-  personalInformation: any;
+  tags: Tag[] = [];
+  extraTags: Tag[] = [];
+  allProducts: any[] = [];
+  categories: any[] = [];
 
   submitted: boolean = false;
 
-  items: MenuItem[] =  [
-    {label: 'Choose gender',
-      command: (event: any) => {
-        this.activeIndex = 0;
-      }},
-    {label: 'Step 2',
-      command: (event: any) => {
-        this.activeIndex = 1;
-      }},
-    {label: 'Step 3'}
-  ];
-
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(private authenticationService: AuthenticationService,
+              private homeService: HomeService) {
   }
 
   ngOnInit(): void {
+    this.homeService.getTags().subscribe((data: Tag[]) => {
+      this.tags = data;
+    });
+    this.homeService.getOptionalTags().subscribe((data: Tag[]) => {
+      this.extraTags = data;
+    });
+    this.homeService.getCategories().subscribe((data: Tag[]) => {
+      this.categories = data;
+    });
+    this.loading = true;
+    this.homeService.getProductsURL().subscribe((products: any) => this.allProducts = products.filter((product: any) => {
+      this.loading = false;
+      return product.imgURL ;
+    }));
   }
 
-  showMaximizableDialog() {
-    this.displayMaximizable = true;
+  showSearchDialog() {
+    this.displaySearchWizard = true;
   }
 
-  nextPage() {
-    this.activeIndex++;
+  showAddTagDialog() {
+    this.displayAddTagWizard = true;
   }
 
-  backPage() {
-    this.activeIndex--;
+  showAddGiftDialog() {
+    this.displayAddGiftWizard = true;
+  }
+
+  showSaveSearchDialog() {
+    this.displaySaveSearchWizard = true;
+  }
+
+  showLoadSearchDialog() {
+    this.displayLoadSearchWizard = true;
+  }
+
+  getItemsByCategory(category: string | null): any[] {
+    return this.allProducts.filter((product: any) => {
+      return product.category === category;
+    })
+  }
+
+  search() {
   }
 
   logout() {

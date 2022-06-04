@@ -1,0 +1,36 @@
+
+.element-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.element {
+  width: 30%;
+  margin: 20px;
+}
+
+.select-button-set::ng-deep {
+  .p-button {
+    width: 180px;
+    display: block;
+    flex: unset !important;
+    margin: 20px;
+
+    &.p-highlight {
+      background-color: #883cae;
+    }
+  }
+
+  .p-buttonset {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.search-button {
+  float: right;
+}
