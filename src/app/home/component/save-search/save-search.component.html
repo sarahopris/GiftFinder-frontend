@@ -1,9 +1,10 @@
-<form [formGroup]="form" action="#" class="sign-in-form" (ngSubmit)="onSubmit()"
+<form [formGroup]="form" action="#" class="sign-in-form" (ngSubmit)="search()"
       autocomplete="off">
 
     <div class="input-field">
         <i class="fas fa-user"></i>
         <input type="text" name="tag" id="inputTag" formControlName="name"
+               [(ngModel)]="name"
                [ngClass]="{ 'is-invalid': submitted && formControls['name'].errors }"
                placeholder="This gift is for ..." required
                autofocus ngModel/>

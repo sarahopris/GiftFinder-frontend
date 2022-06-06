@@ -1,36 +1,52 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Tag} from '../../../models/tag';
 import {environment} from '../../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class HomeService {
 
-  constructor(private httpClient: HttpClient) { }
+    private tags: string[] = [];
 
-  public getTags(): any {
-    return this.httpClient.get<Tag[]>("assets/tags.json");
-  }
+    constructor(private httpClient: HttpClient) {
+    }
 
-  public getOptionalTags(): any {
-    return this.httpClient.get<Tag[]>(`${environment.webServiceEndpointURL}tag/getAllOptionalTags`);
-  }
+    public getTags(): any {
+        return this.httpClient.get<Tag[]>("assets/tags.json");
+    }
 
-  public getProducts(): any {
-    return this.httpClient.get<any>(`${environment.webServiceEndpointURL}item/getAll`);
-  }
+    public addTag(name: string): any {
+        return this.httpClient.post<any>(`${environment.webServiceEndpointURL}tag/addTag`, [{mandatory: 0, tagName: name}]);
+    }
 
-  public getCategories(): any {
-    return this.httpClient.get<any>(`${environment.webServiceEndpointURL}category/getAllCategories`);
-  }
+    public getOptionalTags(): any {
+        return this.httpClient.get<Tag[]>(`${environment.webServiceEndpointURL}tag/getAllOptionalTags`);
+    }
 
-  public getProductsURL(): any {
-    return this.httpClient.get<any>(`${environment.webServiceEndpointURL}item/getItemsLists`);
-  }
+    public getProducts(): any {
+        return this.httpClient.get<any>(`${environment.webServiceEndpointURL}item/getAll`);
+    }
 
-  public search(receiverName: string, tags: string[], username: string): any {
-    return this.httpClient.post<any>(`${environment.webServiceEndpointURL}receiver/addTagsToReceiver?receiverName=${receiverName}&tags=${tags}&username=${username}`, {});
-  }
+    public getAllReceiversOfUser(): any {
+        return this.httpClient.get<any>(`${environment.webServiceEndpointURL}receiver/getAllReceiversOfUser?username=${localStorage.getItem('currentUsername') || ''}`);
+    }
+
+    public getCategories(): any {
+        return this.httpClient.get<any>(`${environment.webServiceEndpointURL}category/getAllCategories`);
+    }
+
+    public getProductsURL(): any {
+        return this.httpClient.get<any>(`${environment.webServiceEndpointURL}item/getItemsLists`);
+    }
+
+    public saveSearch(receiverName: string): any {
+        return this.httpClient.post<any>(`${environment.webServiceEndpointURL}receiver/addTagsToReceiver?receiverName=${receiverName}&tags=${this.tags}&username=${localStorage.getItem('currentUsername') || ''}`, {});
+    }
+
+    public search(selectedTagNames: string[]): any {
+        this.tags = selectedTagNames;
+        return this.httpClient.get<any>(`${environment.webServiceEndpointURL}item/getSuggestedItems?selectedTagNames=${selectedTagNames}`);
+    }
 }

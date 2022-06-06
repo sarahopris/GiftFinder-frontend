@@ -136,4 +136,8 @@ form.sign-in-form {
       background-color: #e0f3ff;
     }
   }
+
+  &:disabled {
+    background-color: #adadad;
+  }
 }

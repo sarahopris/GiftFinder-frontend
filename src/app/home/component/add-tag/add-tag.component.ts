@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {HomeService} from '../home/home.service';
 
 @Component({
   selector: 'app-add-tag',
@@ -12,8 +13,13 @@ export class AddTagComponent implements OnInit {
   submitted = false;
   isFormInvalid = false;
   form: FormGroup;
+  tag: string = '';
 
-  constructor(private formBuilder: FormBuilder) {
+  @Output()
+  close: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  constructor(private formBuilder: FormBuilder,
+              private homeService: HomeService) {
     this.form = this.formBuilder.group({
       tag: ['', Validators.required]
     });
@@ -23,7 +29,19 @@ export class AddTagComponent implements OnInit {
   }
 
   onSubmit() {
+    this.homeService.addTag(this.tag).subscribe(
+        (data: any) => {
+          this.closeAndClear();
+        },
+        () => {
+          this.closeAndClear();
+        }
+    );
+  }
 
+  closeAndClear() {
+    this.tag = '';
+    this.close.emit(true);
   }
 
   get formControls() {

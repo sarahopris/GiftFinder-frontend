@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Tag} from '../../../models/tag';
 import {MenuItem} from 'primeng/api';
 import {HomeService} from '../home/home.service';
@@ -15,6 +15,9 @@ export class WizzardComponent implements OnInit {
 
   @Input()
   extraTags: Tag[] = [];
+
+  @Output()
+  close: EventEmitter<any> = new EventEmitter<any>();
 
   optionalTags: Tag[] = [];
   gender: Tag = {};
@@ -102,8 +105,14 @@ export class WizzardComponent implements OnInit {
   }
 
   search() {
-    // this.service.search(this.name,
-    //     [this.gender, this.age, this.relationship, this.budget, this.occasion, ...this.optionalTags].map(tag => tag.tagName || ''),
-    //     localStorage.getItem('currentUsername') || '').subscribe((data: any) => console.log(data));
+    this.close.emit([this.gender, this.age, this.relationship, this.budget, this.occasion, ...this.optionalTags].map(tag => tag.tagName || ''));
+    this.optionalTags = [];
+    this.gender = {};
+    this.budget= {};
+    this.age = {};
+    this.occasion = {};
+    this.relationship = {};
+    this.activeIndex = 0;
+    this.activeIndex = 0;
   }
 }
