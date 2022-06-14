@@ -90,4 +90,8 @@ form.sign-in-form {
   &:hover {
     background-color: #a569ff;
   }
+
+  &:disabled {
+    background-color: #adadad;
+  }
 }

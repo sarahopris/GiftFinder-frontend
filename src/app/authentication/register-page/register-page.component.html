@@ -71,19 +71,19 @@
         <div class="panels-container">
             <div class="panel left-panel">
                 <div class="content">
-                    <h3>{{'register.welcome'| translate}}</h3>
+                    <h3>{{'Welcome to our GiftFinder application!'| translate}}</h3>
                     <p>
-                        {{'register.message'| translate}}
+                        {{'Register, then find the perfect gift!'| translate}}
                     </p>
                 </div>
                 <img class="image"/>
             </div>
         </div>
     </div>
-    <div>
-        <p-selectButton class="lang-dropdown" [options]="translatedLanguages" [(ngModel)]="selectedLang"
-                        (onChange)="switchLang(selectedLang.code)" optionLabel="name"></p-selectButton>
-    </div>
+<!--    <div>-->
+<!--        <p-selectButton class="lang-dropdown" [options]="translatedLanguages" [(ngModel)]="selectedLang"-->
+<!--                        (onChange)="switchLang(selectedLang.code)" optionLabel="name"></p-selectButton>-->
+<!--    </div>-->
 </div>
 
 <p-dialog header="Ups..." position="top-right" [(visible)]="displayModal" [style]="{width: '700px'}">

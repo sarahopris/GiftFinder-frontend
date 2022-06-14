@@ -1,4 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Tag} from '../../../models/tag';
+import {HomeService} from '../home/home.service';
 
 @Component({
   selector: 'app-load-search',
@@ -8,14 +10,17 @@ import {Component, Input, OnInit} from '@angular/core';
 export class LoadSearchComponent implements OnInit {
 
   @Input()
-  savedNames = ['Mom', 'John', "Steve", "Mary", "Tupac"]
+  savedNames: any[] = [];
 
-  constructor() { }
+  @Output()
+  close: EventEmitter<any> = new EventEmitter<any>();
+
+  constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
   }
 
-  searchByName(name: any) {
-
+  searchByName(tags: any[]) {
+    this.close.emit(tags.map(tag => tag.tagName || ''));
   }
 }

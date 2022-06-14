@@ -7,7 +7,7 @@
     <ng-template pTemplate="content">
         <div class="p-fluid element-list">
             <div class="element" *ngFor="let name of savedNames">
-                <p-button label="{{name}}" (onClick)="searchByName(name)"></p-button>
+                <p-button label="{{name.receiverName}}" (onClick)="searchByName(name.tags)"></p-button>
             </div>
         </div>
     </ng-template>

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../../authentication/service/authentication.service';
-import {MenuItem} from 'primeng/api';
 import {HomeService} from './home.service';
 import {Tag} from '../../../models/tag';
 
@@ -39,6 +38,7 @@ export class HomeComponent implements OnInit {
   extraTags: Tag[] = [];
   allProducts: any[] = [];
   categories: any[] = [];
+  savedNames: any[] = [];
 
   submitted: boolean = false;
 
@@ -56,11 +56,13 @@ export class HomeComponent implements OnInit {
     this.homeService.getCategories().subscribe((data: Tag[]) => {
       this.categories = data;
     });
-    this.loading = true;
-    this.homeService.getProductsURL().subscribe((products: any) => this.allProducts = products.filter((product: any) => {
-      this.loading = false;
-      return product.imgURL ;
-    }));
+    // this.homeService.getProductsURL().subscribe((products: any) => this.allProducts = products.filter((product: any) => {
+    //   this.loading = false;
+    //   return product.imgURL ;
+    // }));
+    this.homeService.getAllReceiversOfUser().subscribe((data: any[]) => {
+      this.savedNames = data;
+    });
   }
 
   showSearchDialog() {
@@ -87,6 +89,35 @@ export class HomeComponent implements OnInit {
     return this.allProducts.filter((product: any) => {
       return product.category === category;
     })
+  }
+
+  tagAdded() {
+    this.displayAddTagWizard = false;
+    this.homeService.getOptionalTags().subscribe((data: Tag[]) => {
+      this.extraTags = data;
+    });
+  }
+
+  searchSaved() {
+    this.displaySaveSearchWizard = false;
+    this.homeService.getAllReceiversOfUser().subscribe((data: any[]) => {
+      this.savedNames = data;
+    });
+  }
+
+  searchInitiated(tags: any) {
+    this.loading = true;
+    this.homeService.search(tags).subscribe(
+      (products: any) => {
+        this.loading = false;
+        this.allProducts = products.filter((product: any) => {
+          this.loading = false;
+          return product.imgURL ;
+        });
+      }
+    );
+    this.displaySearchWizard = false;
+    this.displayLoadSearchWizard = false;
   }
 
   search() {
