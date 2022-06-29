@@ -13,6 +13,8 @@ export class AddGiftComponent implements OnInit {
 
   @Input()
   tags: Tag[] = [];
+  @Input()
+  categories: string[] = [];
   form: FormGroup;
   optionalTags: Tag[] = [];
   genders: Tag[] = [];
@@ -21,6 +23,8 @@ export class AddGiftComponent implements OnInit {
   occasions: Tag[] = [];
   relationships: Tag[] = [];
   activeIndex = 0;
+  fileName: string = '';
+  image: any | null = null;
   items: MenuItem[] =  [
     {label: 'Details',
       command: (event: any) => {
@@ -52,12 +56,14 @@ export class AddGiftComponent implements OnInit {
       }},
   ];
 
-  close: EventEmitter<boolean> = new EventEmitter<boolean>();
+  close: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private formBuilder: FormBuilder,
               private homeService: HomeService) {
     this.form = this.formBuilder.group({
-      tag: ['', Validators.required]
+      itemName: ['', Validators.required],
+      categoryName: ['', Validators.required],
+      image: ['', Validators.required],
     });
   }
 
@@ -78,7 +84,34 @@ export class AddGiftComponent implements OnInit {
     this.activeIndex--;
   }
 
-  search() {
+
+  get formControls() {
+    return this.form.controls;
+  }
+
+  handleFileInput(event: any) {
+    // const target = files as HTMLInputElement;
+    this.image = event.target.files?.item(0);
+    this.fileName = this.image.name;
+    this.formControls['image'].setValue(this.fileName);
+  }
+
+  upload() {
+    // this.close.emit([...this.genders, ...this.ages, ...this.relationships, ...this.budgets, ...this.occasions, ...this.optionalTags].map(tag => tag.tagName || ''));
+    // this.optionalTags = [];
+    // this.genders = [];
+    // this.budgets= [];
+    // this.ages = [];
+    // this.occasions = [];
+    // this.relationships = [];
+    // this.activeIndex = 0;
+    const fd = new FormData();
+    fd.append('itemName', this.formControls['itemName'].value);
+    fd.append('categoryName', this.formControls['categoryName'].value.categoryName);
+    fd.append('image', this.image);
+    fd.append('tags', JSON.stringify([...this.genders, ...this.ages, ...this.relationships, ...this.budgets, ...this.occasions, ...this.optionalTags].map(tag => tag.tagName || '')));
+
+    this.homeService.addNewItemWithTags(fd).subscribe();
   }
 
 }

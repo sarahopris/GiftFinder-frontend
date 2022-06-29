@@ -17,15 +17,23 @@
                 method="post"
                 enctype="multipart/form-data">
             <div>
+                <p-dropdown [options]="categories"
+                            formControlName="categoryName"
+                            name="categoryName" id="categoryName" placeholder="Select a category" optionLabel="categoryName" [showClear]="true"></p-dropdown>
+<!--                <p-fileUpload name="image"-->
+<!--                              accept="image/*"></p-fileUpload>-->
 
-              <label>Gift Image: </label>
-              <input type="file" name="giftImage" id="giftImage" accept="image/png, image/jpeg" />
+                <input type="text" name="itemName" id="itemName"
+                       formControlName="itemName" class="input-field" placeholder="Gift name"/>
+                <input type="file" name="image"
+                       id="image" accept="image/png, image/jpeg" class="input-field inputfile" (change)="handleFileInput($event)"/>
+                <label for="image" class="input-field input-label">{{fileName ? fileName : 'Choose a file (Click me)'}}</label>
 
             </div>
           </form>
             <ng-template pTemplate="footer">
                 <div class="grid grid-nogutter justify-content-end">
-                    <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right" class="search-button"></p-button>
+                    <p-button [disabled]="form.invalid" label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right" class="search-button"></p-button>
                 </div>
             </ng-template>
         </p-card>
@@ -196,7 +204,7 @@
             <ng-template pTemplate="footer">
                 <div class="grid grid-nogutter justify-content-end">
                     <p-button label="Back" (onClick)="backPage()" icon="pi pi-angle-left" iconPos="left"></p-button>
-                    <p-button label="Add gift" (onClick)="search()" icon="pi pi-angle-right" iconPos="right" class="search-button"></p-button>
+                    <p-button label="Add gift" (onClick)="upload()" icon="pi pi-angle-right" iconPos="right" class="search-button"></p-button>
                 </div>
             </ng-template>
         </p-card>

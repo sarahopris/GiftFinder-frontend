@@ -17,6 +17,7 @@ import { LoadSearchComponent } from './component/load-search/load-search.compone
 import {CarouselModule} from 'primeng/carousel';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {SplitButtonModule} from 'primeng/splitbutton';
+import {DropdownModule} from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {SplitButtonModule} from 'primeng/splitbutton';
     TranslateModule,
     CarouselModule,
     ProgressSpinnerModule,
-    SplitButtonModule
+    SplitButtonModule,
+    DropdownModule
   ]
 })
 export class HomeModule {

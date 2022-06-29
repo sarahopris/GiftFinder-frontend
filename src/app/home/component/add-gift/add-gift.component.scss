@@ -34,3 +34,67 @@
 .search-button {
   float: right;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+
+input {
+  font-family: "Poppins", sans-serif;
+}
+
+.input-field {
+  font-family: "Poppins", sans-serif;
+  max-width: 380px;
+  width: 100%;
+  background-color: #f0f0f0;
+  margin: 10px 0;
+  height: 46px;
+  border-radius: 7px;
+  display: grid;
+  grid-template-columns: 15% 85%;
+  border-color: transparent;
+  padding: 0 0.4rem;
+  font-size: 20px;
+  position: relative;
+
+  &.inputfile {
+    /* visibility: hidden etc. wont work */
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+
+  &.inputfile:focus + label {
+    /* keyboard navigation */
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+  }
+
+  &.inputfile + label * {
+    pointer-events: none;
+  }
+
+  &.input-label {
+    display: block;
+    line-height: 2.2;
+    color: #787878;
+  }
+}
+
+::ng-deep {
+  .p-dropdown {
+    width: 380px;
+    height: 50px;
+    background-color: #f0f0f0;
+  }
+
+  .p-inputtext {
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+    background-color: #f0f0f0;
+  }
+}
+
