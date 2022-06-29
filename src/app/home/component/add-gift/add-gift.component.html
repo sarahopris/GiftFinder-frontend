@@ -7,11 +7,22 @@
             </ng-template>
             <ng-template pTemplate="subtitle">
             </ng-template>
-            <ng-template pTemplate="content">
-                <div class="p-fluid element-list">
-                    Name, image
-                </div>
-            </ng-template>
+<!--            <ng-template pTemplate="content">-->
+<!--                <div class="p-fluid element-list">-->
+<!--                    Name, image-->
+<!--                </div>-->
+<!--            </ng-template>(ngSubmit)="onSubmit()-->
+          <form [formGroup]="form" action="#" class="sign-in-form"
+                autocomplete="off"
+                method="post"
+                enctype="multipart/form-data">
+            <div>
+
+              <label>Gift Image: </label>
+              <input type="file" name="giftImage" id="giftImage" accept="image/png, image/jpeg" />
+
+            </div>
+          </form>
             <ng-template pTemplate="footer">
                 <div class="grid grid-nogutter justify-content-end">
                     <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right" class="search-button"></p-button>

@@ -49,4 +49,8 @@ export class HomeService {
         this.tags = selectedTagNames;
         return this.httpClient.get<any>(`${environment.webServiceEndpointURL}item/getSuggestedItems?selectedTagNames=${selectedTagNames}`);
     }
+
+    public deleteReceiver(receiverName: string): any {
+        return this.httpClient.delete<any>(`${environment.webServiceEndpointURL}receiver/deleteReceiver?receiverName=${receiverName}`);
+    }
 }

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../../authentication/service/authentication.service';
 import {HomeService} from './home.service';
 import {Tag} from '../../../models/tag';
+import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,8 @@ export class HomeComponent implements OnInit {
   displayLoadSearchWizard= false;
   displaySaveSearchWizard= false;
   loading = false;
+  firstSearch = false;
+  noResults = false;
   responsiveOptions = [
     {
       breakpoint: '1024px',
@@ -43,7 +46,8 @@ export class HomeComponent implements OnInit {
   submitted: boolean = false;
 
   constructor(private authenticationService: AuthenticationService,
-              private homeService: HomeService) {
+              private homeService: HomeService,
+              private sanitizer:DomSanitizer) {
   }
 
   ngOnInit(): void {
@@ -105,15 +109,23 @@ export class HomeComponent implements OnInit {
     });
   }
 
+
+  sanitizeImagePath(imageUrl: string){
+
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+  }
+
   searchInitiated(tags: any) {
     this.loading = true;
+    this.firstSearch = true;
     this.homeService.search(tags).subscribe(
       (products: any) => {
         this.loading = false;
         this.allProducts = products.filter((product: any) => {
           this.loading = false;
-          return product.imgURL ;
+          return product.imgURL;
         });
+        this.noResults = this.allProducts.length === 0;
       }
     );
     this.displaySearchWizard = false;

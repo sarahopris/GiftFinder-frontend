@@ -16,7 +16,7 @@ import { SaveSearchComponent } from './component/save-search/save-search.compone
 import { LoadSearchComponent } from './component/load-search/load-search.component';
 import {CarouselModule} from 'primeng/carousel';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
-
+import {SplitButtonModule} from 'primeng/splitbutton';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,8 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     SelectButtonModule,
     TranslateModule,
     CarouselModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    SplitButtonModule
   ]
 })
 export class HomeModule {

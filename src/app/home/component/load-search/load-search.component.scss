@@ -3,10 +3,25 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
+  ::ng-deep {
+    .p-button-icon-only {
+      border-radius: 0 10px 10px 0;
+    }
+
+    .receiver-button {
+      flex: 1;
+
+      button {
+        border-radius:  10px 0 0 10px;
+      }
+    }
+  }
 }
 
 .element {
   width: 30%;
+  display: inline-flex;
   margin: 20px;
 }
 

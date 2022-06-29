@@ -1,6 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit} from '@angular/core';
 import {Tag} from '../../../models/tag';
 import {MenuItem} from 'primeng/api';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {HomeService} from "../home/home.service";
 
 @Component({
   selector: 'app-add-gift',
@@ -11,7 +13,7 @@ export class AddGiftComponent implements OnInit {
 
   @Input()
   tags: Tag[] = [];
-
+  form: FormGroup;
   optionalTags: Tag[] = [];
   genders: Tag[] = [];
   budgets: Tag[] = [];
@@ -50,7 +52,14 @@ export class AddGiftComponent implements OnInit {
       }},
   ];
 
-  constructor() { }
+  close: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  constructor(private formBuilder: FormBuilder,
+              private homeService: HomeService) {
+    this.form = this.formBuilder.group({
+      tag: ['', Validators.required]
+    });
+  }
 
   ngOnInit(): void {
   }

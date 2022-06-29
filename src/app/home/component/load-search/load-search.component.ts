@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Tag} from '../../../models/tag';
 import {HomeService} from '../home/home.service';
+import {MenuItem} from 'primeng/api';
 
 @Component({
   selector: 'app-load-search',
@@ -22,5 +23,13 @@ export class LoadSearchComponent implements OnInit {
 
   searchByName(tags: any[]) {
     this.close.emit(tags.map(tag => tag.tagName || ''));
+  }
+
+  delete(name: any) {
+    let index = this.savedNames.indexOf(name);
+    if (index !== -1) {
+      this.savedNames.splice(index, 1);
+    }
+    this.homeService.deleteReceiver(name.receiverName).subscribe();
   }
 }

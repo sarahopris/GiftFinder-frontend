@@ -5,9 +5,9 @@
       <div class="signin-signup">
         <p-button (click)="showSearchDialog()" icon="pi pi-search" label="Search for gifts"
                   class="btn"></p-button>
-        <p-button (click)="showSaveSearchDialog()" icon="pi pi-heart-fill" label="Save Search"
+        <p-button *ngIf="firstSearch" (click)="showSaveSearchDialog()" icon="pi pi-heart-fill" label="Save Search"
                   class="btn"></p-button>
-        <p-button (click)="showLoadSearchDialog()" icon="pi pi-download" label="Load Search"
+        <p-button *ngIf="!(savedNames.length === 0)" (click)="showLoadSearchDialog()" icon="pi pi-download" label="Load Search"
                   class="btn"></p-button>
         <br>
         <p-button (click)="showAddTagDialog()" icon="pi pi-comment" label="Add tag" class="btn"></p-button>
@@ -64,7 +64,7 @@
                     [autoplayInterval]="3000" [circular]="true">
           <ng-template let-product pTemplate="item">
             <div *ngIf="product.imgURL !== null" class="result-wrapper">
-              <img src="assets\giftFinderPics\{{product.imgURL}}">
+              <img src="assets/giftFinderPics/{{product.imgURL}}"/>
               <p>{{product.itemName}}</p>
             </div>
           </ng-template>
@@ -73,3 +73,5 @@
     </ng-container>
   </div>
 </div>
+<h3 *ngIf="noResults" class="no-results">No products match the combination of needed requirements:(</h3>
+<h3 *ngIf="noResults" class="no-results">No products match the combination of needed requirements:(</h3>
