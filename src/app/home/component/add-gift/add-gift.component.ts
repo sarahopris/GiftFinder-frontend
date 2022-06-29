@@ -109,9 +109,8 @@ export class AddGiftComponent implements OnInit {
     fd.append('itemName', this.formControls['itemName'].value);
     fd.append('categoryName', this.formControls['categoryName'].value.categoryName);
     fd.append('image', this.image);
-    fd.append('tags', JSON.stringify([...this.genders, ...this.ages, ...this.relationships, ...this.budgets, ...this.occasions, ...this.optionalTags].map(tag => tag.tagName || '')));
-
-    this.homeService.addNewItemWithTags(fd).subscribe();
+    const giftTags = [...this.genders, ...this.ages, ...this.relationships, ...this.budgets, ...this.occasions, ...this.optionalTags].map(tag => tag.tagName || '');
+    this.homeService.addNewItemWithTags(fd, giftTags).subscribe();
   }
 
 }

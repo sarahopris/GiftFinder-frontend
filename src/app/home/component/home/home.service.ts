@@ -45,8 +45,8 @@ export class HomeService {
         return this.httpClient.post<any>(`${environment.webServiceEndpointURL}receiver/addTagsToReceiver?receiverName=${receiverName}&tags=${this.tags}&username=${localStorage.getItem('currentUsername') || ''}`, {});
     }
 
-    public addNewItemWithTags(item: any): any {
-        return this.httpClient.post<any>(`${environment.webServiceEndpointURL}item/addNewItemWithTags`, item);
+    public addNewItemWithTags(item: any, tags: string[]): any {
+      return this.httpClient.post<any>(`${environment.webServiceEndpointURL}item/addNewItemWithTags?tags=${tags}`, item);
     }
 
     public search(selectedTagNames: string[]): any {

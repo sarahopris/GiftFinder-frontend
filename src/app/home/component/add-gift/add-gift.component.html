@@ -27,7 +27,7 @@
                        formControlName="itemName" class="input-field" placeholder="Gift name"/>
                 <input type="file" name="image"
                        id="image" accept="image/png, image/jpeg" class="input-field inputfile" (change)="handleFileInput($event)"/>
-                <label for="image" class="input-field input-label">{{fileName ? fileName : 'Choose a file (Click me)'}}</label>
+                <label for="image" class="input-field input-label">{{fileName ? fileName : 'Choose an image (Click me)'}}</label>
 
             </div>
           </form>
@@ -158,7 +158,8 @@
     <div class="stepsdemo-content">
         <p-card>
             <ng-template pTemplate="title">
-                Is this gift suited for the following occasions?
+                Choose the occasions for which the gift would be suited for:
+
             </ng-template>
             <ng-template pTemplate="subtitle">
                 Select at least one tag
@@ -187,7 +188,7 @@
     <div class="stepsdemo-content">
         <p-card>
             <ng-template pTemplate="title">
-                Can this gift be enjoyed better combined with some of these hobbies/interests?
+                For which of the following hobbies/interests/characteristics will this be suitable?
             </ng-template>
             <ng-template pTemplate="subtitle">
             </ng-template>
