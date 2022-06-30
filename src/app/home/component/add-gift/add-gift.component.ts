@@ -15,6 +15,9 @@ export class AddGiftComponent implements OnInit {
   tags: Tag[] = [];
   @Input()
   categories: string[] = [];
+  @Input()
+  extraTags: Tag[] = [];
+
   form: FormGroup;
   optionalTags: Tag[] = [];
   genders: Tag[] = [];

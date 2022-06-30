@@ -41,7 +41,7 @@
 <p-dialog header="Add Gift Wizard" [(visible)]="displayAddGiftWizard" [modal]="true" [style]="{width: '50vw'}"
           [maximizable]="true"
           [draggable]="false" [resizable]="false">
-  <app-add-gift [tags]="tags" [categories]="categories"></app-add-gift>
+  <app-add-gift [tags]="tags" [categories]="categories" [extraTags]="extraTags"></app-add-gift>
 </p-dialog>
 <p-dialog header="Save search" [(visible)]="displaySaveSearchWizard" [modal]="true" [style]="{width: '50vw'}"
           [maximizable]="true"
@@ -73,5 +73,4 @@
     </ng-container>
   </div>
 </div>
-<h3 *ngIf="noResults" class="no-results">No products match the combination of needed requirements:(</h3>
 <h3 *ngIf="noResults" class="no-results">No products match the combination of needed requirements:(</h3>
