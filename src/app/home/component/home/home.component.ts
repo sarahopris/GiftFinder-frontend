@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   loading = false;
   firstSearch = false;
   noResults = false;
+  imageType : string = 'data:image/PNG;base64,';
   responsiveOptions = [
     {
       breakpoint: '1024px',
@@ -132,7 +133,8 @@ export class HomeComponent implements OnInit {
     this.displayLoadSearchWizard = false;
   }
 
-  search() {
+  getImage(data: string) {
+    return 'data:image/jpg;base64,' + (this.sanitizer.bypassSecurityTrustResourceUrl(data) as any).changingThisBreaksApplicationSecurity;
   }
 
   logout() {

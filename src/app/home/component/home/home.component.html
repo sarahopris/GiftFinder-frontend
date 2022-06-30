@@ -64,7 +64,7 @@
                     [autoplayInterval]="3000" [circular]="true">
           <ng-template let-product pTemplate="item">
             <div *ngIf="product.imgURL !== null" class="result-wrapper">
-              <img src="assets/giftFinderPics/{{product.imgURL}}"/>
+              <img src="{{getImage(product.imgContent)}}"/>
               <p>{{product.itemName}}</p>
             </div>
           </ng-template>
